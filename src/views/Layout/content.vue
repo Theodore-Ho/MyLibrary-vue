@@ -1,22 +1,21 @@
 <template>
     <div>
-        <div class="header">Header Area</div>
-        <div class="content" style="height: 1200px">
+        <div class="header">
+            <i v-if="!isCollapse" @click="collapseMenu" class="el-icon-d-arrow-left" id="icon"></i>
+            <i v-else @click="collapseMenu" class="el-icon-d-arrow-right" id="icon"></i>
+            Header Area</div>
             <router-view></router-view>
-            <i class="el-icon-edit"></i>
-            <i class="el-icon-share"></i>
-            <i class="el-icon-delete"></i>
-            <el-button type="primary" icon="el-icon-search">搜索</el-button>
-            <font-awesome-icon icon="fa-solid fa-user-secret" />
-            <font-awesome-icon icon="fa-solid fa-user-alien" />
-            <i class="el-icon-upload"></i>
-        </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    props:['isCollapse'],
+    methods:{
+        collapseMenu(){
+            this.$emit('changeCollapse')
+        }
+    }
 }
 </script>
 
@@ -24,5 +23,8 @@ export default {
 .header{
     height: 60px;
     background-color: aqua;
+    #icon{
+        font-size: 30px;
+    }
 }
 </style>

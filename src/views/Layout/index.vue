@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
-        <Menu class="menuCSS"/>
-        <Content class="contentCSS"/>
+        <Menu class="menuCSS" :isCollapse="isCollapse"/>
+        <Content class="contentCSS" :class="{isActive:isCollapse}" @changeCollapse="changeCollapse" :isCollapse="isCollapse"/>
     </div>
   
 </template>
@@ -13,6 +13,16 @@ export default {
     components:{
         Menu,
         Content
+    },
+    data(){
+        return {
+            isCollapse:false,
+        }
+    },
+    methods:{
+        changeCollapse(){
+            this.isCollapse = !this.isCollapse;
+        }
     }
 }
 </script>
@@ -20,7 +30,6 @@ export default {
 <style lang="less" scoped>
 .layout{
     .menuCSS{
-        width: 200px;
         background: rgb(156, 214, 248);
         position: fixed;
         top: 0;
@@ -28,6 +37,9 @@ export default {
     }
     .contentCSS{
         margin-left: 200px;
+    }
+    .isActive{
+        margin-left: 64px;
     }
 }
 </style>

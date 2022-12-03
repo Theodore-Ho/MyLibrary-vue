@@ -3,12 +3,15 @@
         <el-menu
       default-active="/"
       class="el-menu-vertical-demo"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-      collapse
+      background-color="rgb(156, 214, 248)"
+      text-color="#000"
+      active-text-color="#FFF"
+      :collapse="isCollapse"
       router
       >
+      <el-menu-item>
+        <span slot="title">Book Manage System</span>
+      </el-menu-item>
       <el-menu-item index="/">
         <i class="el-icon-s-home"></i>
         <span slot="title">Home</span>
@@ -34,10 +37,18 @@
 
 <script>
 export default {
+    props:['isCollapse'],
+    data(){
+      return{
 
-}
+      }
+    }
+};
 </script>
 
-<style>
-
+<style lang="less" scoped>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>
